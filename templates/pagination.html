@@ -1,0 +1,31 @@
+{% load i18n %}
+{% if has_pagination %}
+<div class="pagination">
+    <span class="info">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+    <ul>
+        {% if show_first %}
+            <li class="nav"><a href="?p=1">&lt;&lt; {% trans "First" %}</a></li>
+        {% endif %}
+        {% if page.has_previous %}
+            <li class="nav"><a href="?p={{ page.previous_page_number }}">&lt; {% trans "Previous" %}</a></li>
+        {% endif %}
+    
+        {% for p in previous_pages %}
+            <li><a href="?p={{ p }}">{{ p }}</a></li>
+        {% endfor %}  
+      
+        <li class="active">{{ page.number }}</li>
+    
+        {% for p in next_pages %}
+            <li><a href="?p={{ p }}">{{ p }}</a></li>
+        {% endfor %}
+    
+        {% if page.has_next %}
+            <li class="nav"><a href="?p={{ page.next_page_number }}">{% trans "Next" %} &gt;</a></li>
+        {% endif %}
+        {% if show_last %}
+            <li class="nav"><a href="?p={{ last_page }}">{% trans "Last" %} &gt;&gt;</a></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
