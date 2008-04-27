@@ -1,3 +1,29 @@
+"""
+The pagination tag is a very simple way to add page-navigation to your 
+view/template. When you fetch content from a model and want to have it
+paginated, simply add something like this to your view::
+    
+    page_nr = request.REQUEST.get('p', 1)
+    paginator = Paginator(NewsItem.objects.select_related().all(), 5)
+    page = paginator.page(page_nr)
+    
+and add the page to your context (with the name 'page'). Then add the
+paginator tag to your template first by loading this library::
+    
+    {% load zsutils.pagination %}
+    
+and then by adding the tag itself::
+    
+    {% pagination %}
+    
+That's it. Now you will get a nice simple pagination, which you can easily
+customize by overwriting the pagination.html template.
+
+In case the template variable has a different semantic for you, you can
+tell the pagination template tag to use a different context variable through
+settings.CONTEXT_PAGINATION_VARIABLE.
+"""
+
 from django.template import Library
 from django.conf import settings
 
