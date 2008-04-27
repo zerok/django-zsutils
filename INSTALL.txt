@@ -1,0 +1,13 @@
+The simplest way to use this is by pulling it straight into your PYTHONPATH::
+    
+    cd /some/prefix/lib/python2.5/site-packages
+    git clone git://github.com/zerok/django-zsutils.git django_zsutils
+    
+and then adding it to your project's installed apps::
+    
+    INSTALLED_APPS = (
+        # ...
+        'django_zsutils',
+        # ...
+    )
+
