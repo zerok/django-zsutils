@@ -1,3 +1,5 @@
+__all__ = ('create_view', 'BaseView', )
+
 def create_view(klass):
     def _func(request, *args, **kwargs):
         o = klass(request, *args, **kwargs)
