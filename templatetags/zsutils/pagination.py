@@ -37,6 +37,9 @@ register = Library()
 
 @register.inclusion_tag('pagination.html', takes_context=True)
 def pagination(context):
+    """
+    For details on this templatetag see the pydoc for this module
+    """
     ctx_var = getattr(settings, 'CONTEXT_PAGINATION_VARIABLE', 'page')
     page_limit = int(getattr(settings, 'PAGINATION_PAGE_LIMIT', 10))
     
@@ -49,7 +52,8 @@ def pagination(context):
     lower_half = (page_limit-(page_limit % 2 == 0 and 1 or 0))/2
     previous_pages = range(1, page.number)[-lower_half:]
     upper_half = (page_limit/2)
-    if len(previous_pages) < lower_half: upper_half += lower_half-len(previous_pages)
+    if len(previous_pages) < lower_half:
+        upper_half += lower_half-len(previous_pages)
     next_pages = range(page.number+1, page.paginator.num_pages+1)[:upper_half]
     if len(next_pages) < upper_half:
         lower_half += upper_half-len(next_pages)
