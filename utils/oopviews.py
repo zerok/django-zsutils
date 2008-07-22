@@ -3,7 +3,7 @@ In some instances you end up producing tons of views that actually do mostly
 the same except for perhaps one or two lines. This module offers you a simple
 alternative:
     
-    from django_zsutils import create_view, BaseView
+    from django_zsutils.utils.oopviews import create_view, BaseView
     
     class View1(BaseView):
         def __init__(self, request, \*args, \*\*kwargs):
