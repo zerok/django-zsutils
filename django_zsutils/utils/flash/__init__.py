@@ -22,7 +22,7 @@ class Middleware(object):
         return None
 
     def process_response(self, request, response):
-        if len(request.flash) > 0:
+        if hasattr(request, 'flash') and len(request.flash) > 0:
             request.session['_flash'] = request.flash
         return response
 
